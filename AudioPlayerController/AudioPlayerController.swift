@@ -19,9 +19,13 @@ protocol AudioPlayerController {
     func pause()
     func rollBack()
     func rollForward()
+    func currentDurationDidChange(newValue value: Float64)
 }
 
 final class AudioPlayerControllerImpl {
+    
+    // MARK: - Private properties
+    
     private let _duration = BehaviorSubject<CMTime?>(value: nil)
     private let _currentDuration = BehaviorSubject<CMTime?>(value: nil)
     private let _playerStatus = BehaviorSubject<AudioPlayerStatus>(value: .none)
@@ -30,6 +34,8 @@ final class AudioPlayerControllerImpl {
     private let kRateValues: [Float]
     private let kRollTime: Float64
     private var player: AVPlayer?
+    
+    // MARK: - Initialize
     
     init(audioPlayerFactory: AudioPLayerFactory, kRateValues: [Float], kRollTime: Float64) {
         self.audioPlayerFactory = audioPlayerFactory
@@ -118,6 +124,8 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         _currentDuration.onNext(newTime)
     }
     
+    // MARK: - Private methods
+    
     private func addPeriodicTimeObserver() {
         guard let player = player else {
             return
@@ -128,6 +136,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
     }
     
 }
+
 // MARK: - AudioPlayerController
 
 extension AudioPlayerControllerImpl: AudioPlayerControllerStarter {
