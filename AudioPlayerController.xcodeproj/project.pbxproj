@@ -3,13 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		28EA68392628C7B4002B449A /* AudioPlayerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EA682F2628C7B4002B449A /* AudioPlayerController.framework */; };
 		28EA683E2628C7B4002B449A /* AudioPlayerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EA683D2628C7B4002B449A /* AudioPlayerControllerTests.swift */; };
 		28EA68402628C7B4002B449A /* AudioPlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 28EA68322628C7B4002B449A /* AudioPlayerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28EA684C2628C7EA002B449A /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EA684B2628C7EA002B449A /* AudioPlayerController.swift */; };
+		28EA685B2628CAA8002B449A /* AudioPlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EA685A2628CAA8002B449A /* AudioPlayerFactory.swift */; };
+		28EA685F2628CC7C002B449A /* AudioPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EA685E2628CC7C002B449A /* AudioPlayerStatus.swift */; };
+		28EA68632628D13F002B449A /* AudioPlayerControllerStarter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EA68622628D13F002B449A /* AudioPlayerControllerStarter.swift */; };
+		40ECEDC27094FE52E4BDC68C /* Pods_AudioPlayerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A35601BA5ACB4648D4C583 /* Pods_AudioPlayerController.framework */; };
+		7E485BEC14CBC880A03EBD6B /* Pods_AudioPlayerController_AudioPlayerControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F2BE44D0734B08FA53B98F3 /* Pods_AudioPlayerController_AudioPlayerControllerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,16 @@
 		28EA68382628C7B4002B449A /* AudioPlayerControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioPlayerControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EA683D2628C7B4002B449A /* AudioPlayerControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerControllerTests.swift; sourceTree = "<group>"; };
 		28EA683F2628C7B4002B449A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28EA684B2628C7EA002B449A /* AudioPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
+		28EA685A2628CAA8002B449A /* AudioPlayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerFactory.swift; sourceTree = "<group>"; };
+		28EA685E2628CC7C002B449A /* AudioPlayerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerStatus.swift; sourceTree = "<group>"; };
+		28EA68622628D13F002B449A /* AudioPlayerControllerStarter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerControllerStarter.swift; sourceTree = "<group>"; };
+		53781EA2A7ABC464AE264814 /* Pods-AudioPlayerController-AudioPlayerControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioPlayerController-AudioPlayerControllerTests.release.xcconfig"; path = "Target Support Files/Pods-AudioPlayerController-AudioPlayerControllerTests/Pods-AudioPlayerController-AudioPlayerControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		77DCAEF9D7872AE62D5FC322 /* Pods-AudioPlayerController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioPlayerController.debug.xcconfig"; path = "Target Support Files/Pods-AudioPlayerController/Pods-AudioPlayerController.debug.xcconfig"; sourceTree = "<group>"; };
+		9F2BE44D0734B08FA53B98F3 /* Pods_AudioPlayerController_AudioPlayerControllerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioPlayerController_AudioPlayerControllerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0A37E2F16FF0D4DD61DB77 /* Pods-AudioPlayerController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioPlayerController.release.xcconfig"; path = "Target Support Files/Pods-AudioPlayerController/Pods-AudioPlayerController.release.xcconfig"; sourceTree = "<group>"; };
+		C2A35601BA5ACB4648D4C583 /* Pods_AudioPlayerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioPlayerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC61616395C5D0D7EF5DE314 /* Pods-AudioPlayerController-AudioPlayerControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioPlayerController-AudioPlayerControllerTests.debug.xcconfig"; path = "Target Support Files/Pods-AudioPlayerController-AudioPlayerControllerTests/Pods-AudioPlayerController-AudioPlayerControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40ECEDC27094FE52E4BDC68C /* Pods_AudioPlayerController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,18 +61,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				28EA68392628C7B4002B449A /* AudioPlayerController.framework in Frameworks */,
+				7E485BEC14CBC880A03EBD6B /* Pods_AudioPlayerController_AudioPlayerControllerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CC01B80D69ABA51E5113C58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2A35601BA5ACB4648D4C583 /* Pods_AudioPlayerController.framework */,
+				9F2BE44D0734B08FA53B98F3 /* Pods_AudioPlayerController_AudioPlayerControllerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		28EA68252628C7B4002B449A = {
 			isa = PBXGroup;
 			children = (
 				28EA68312628C7B4002B449A /* AudioPlayerController */,
 				28EA683C2628C7B4002B449A /* AudioPlayerControllerTests */,
 				28EA68302628C7B4002B449A /* Products */,
+				689FF5F698A1A0F9F94597FD /* Pods */,
+				0CC01B80D69ABA51E5113C58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +102,10 @@
 			children = (
 				28EA68322628C7B4002B449A /* AudioPlayerController.h */,
 				28EA68332628C7B4002B449A /* Info.plist */,
+				28EA684B2628C7EA002B449A /* AudioPlayerController.swift */,
+				28EA68622628D13F002B449A /* AudioPlayerControllerStarter.swift */,
+				28EA685E2628CC7C002B449A /* AudioPlayerStatus.swift */,
+				28EA685A2628CAA8002B449A /* AudioPlayerFactory.swift */,
 			);
 			path = AudioPlayerController;
 			sourceTree = "<group>";
@@ -84,6 +117,17 @@
 				28EA683F2628C7B4002B449A /* Info.plist */,
 			);
 			path = AudioPlayerControllerTests;
+			sourceTree = "<group>";
+		};
+		689FF5F698A1A0F9F94597FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				77DCAEF9D7872AE62D5FC322 /* Pods-AudioPlayerController.debug.xcconfig */,
+				AE0A37E2F16FF0D4DD61DB77 /* Pods-AudioPlayerController.release.xcconfig */,
+				DC61616395C5D0D7EF5DE314 /* Pods-AudioPlayerController-AudioPlayerControllerTests.debug.xcconfig */,
+				53781EA2A7ABC464AE264814 /* Pods-AudioPlayerController-AudioPlayerControllerTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28EA68432628C7B4002B449A /* Build configuration list for PBXNativeTarget "AudioPlayerController" */;
 			buildPhases = (
+				F941FF3F2661725145A1E28D /* [CP] Check Pods Manifest.lock */,
 				28EA682A2628C7B4002B449A /* Headers */,
 				28EA682B2628C7B4002B449A /* Sources */,
 				28EA682C2628C7B4002B449A /* Frameworks */,
@@ -122,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28EA68462628C7B4002B449A /* Build configuration list for PBXNativeTarget "AudioPlayerControllerTests" */;
 			buildPhases = (
+				52CE28DEA2595DD2F602838B /* [CP] Check Pods Manifest.lock */,
 				28EA68342628C7B4002B449A /* Sources */,
 				28EA68352628C7B4002B449A /* Frameworks */,
 				28EA68362628C7B4002B449A /* Resources */,
+				9820FFF552262E7FAAE45BFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,6 +194,7 @@
 				TargetAttributes = {
 					28EA682E2628C7B4002B449A = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					28EA68372628C7B4002B449A = {
 						CreatedOnToolsVersion = 12.4;
@@ -189,11 +237,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52CE28DEA2595DD2F602838B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioPlayerController-AudioPlayerControllerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9820FFF552262E7FAAE45BFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudioPlayerController-AudioPlayerControllerTests/Pods-AudioPlayerController-AudioPlayerControllerTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudioPlayerController-AudioPlayerControllerTests/Pods-AudioPlayerController-AudioPlayerControllerTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudioPlayerController-AudioPlayerControllerTests/Pods-AudioPlayerController-AudioPlayerControllerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F941FF3F2661725145A1E28D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioPlayerController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		28EA682B2628C7B4002B449A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28EA685F2628CC7C002B449A /* AudioPlayerStatus.swift in Sources */,
+				28EA68632628D13F002B449A /* AudioPlayerControllerStarter.swift in Sources */,
+				28EA685B2628CAA8002B449A /* AudioPlayerFactory.swift in Sources */,
+				28EA684C2628C7EA002B449A /* AudioPlayerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -326,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -340,7 +456,9 @@
 		};
 		28EA68442628C7B4002B449A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77DCAEF9D7872AE62D5FC322 /* Pods-AudioPlayerController.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -348,6 +466,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AudioPlayerController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,6 +475,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Dmitrii-Voronin.AudioPlayerController";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,7 +483,9 @@
 		};
 		28EA68452628C7B4002B449A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE0A37E2F16FF0D4DD61DB77 /* Pods-AudioPlayerController.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -371,6 +493,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AudioPlayerController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -386,7 +509,9 @@
 		};
 		28EA68472628C7B4002B449A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC61616395C5D0D7EF5DE314 /* Pods-AudioPlayerController-AudioPlayerControllerTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AudioPlayerControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -403,7 +528,9 @@
 		};
 		28EA68482628C7B4002B449A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53781EA2A7ABC464AE264814 /* Pods-AudioPlayerController-AudioPlayerControllerTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AudioPlayerControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
