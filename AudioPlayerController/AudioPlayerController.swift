@@ -91,7 +91,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         }
         let currentTime = CMTimeGetSeconds(player.currentTime())
         let newTime = currentTime - kRollTime < 0 ? 0 : currentTime - kRollTime
-        let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
+        let time2 = newTime.toCMTime
         player.seek(to: time2, toleranceBefore: .zero, toleranceAfter: .zero)
         _currentDuration.onNext(time2)
     }
@@ -103,7 +103,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         let currentTime = CMTimeGetSeconds(player.currentTime())
         let newTime = currentTime + kRollTime
         if newTime < CMTimeGetSeconds(duration) - kRollTime {
-            let time2 = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
+            let time2 = newTime.toCMTime
             player.seek(to: time2, toleranceBefore: .zero, toleranceAfter: .zero)
             _currentDuration.onNext(time2)
         }
@@ -113,7 +113,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         guard let player = player else {
             return
         }
-        let newTime = CMTimeMake(value: Int64(value * 1000 as Float64), timescale: 1000)
+        let newTime = value.toCMTime
         player.seek(to: newTime)
         _currentDuration.onNext(newTime)
     }
@@ -150,5 +150,11 @@ extension AudioPlayerControllerImpl {
             return nil
         }
         return index > kRateValues.count - 1 ? kRateValues.first : kRateValues[index + 1]
+    }
+}
+
+fileprivate extension Float64 {
+    var toCMTime: CMTime {
+        CMTimeMake(value: Int64(self * 1000 as Float64), timescale: 1000)
     }
 }
