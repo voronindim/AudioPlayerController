@@ -90,12 +90,9 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
             return
         }
         let currentTime = CMTimeGetSeconds(player.currentTime())
-            var newTime = currentTime - kRollTime
-            if newTime < 0 {
-                newTime = 0
-            }
+        let newTime = currentTime - kRollTime < 0 ? 0 : currentTime - kRollTime
         let time2: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
-        player.seek(to: time2, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
+        player.seek(to: time2, toleranceBefore: .zero, toleranceAfter: .zero)
         _currentDuration.onNext(time2)
     }
     
@@ -125,7 +122,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         guard let player = player else {
             return
         }
-        player.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 2), queue: DispatchQueue.main, using: { time in
+        player.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: DispatchQueue.main, using: { time in
             self._currentDuration.onNext(time)
         })
     }
