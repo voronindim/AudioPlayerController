@@ -10,8 +10,8 @@ import AVFoundation
 import RxSwift
 
 protocol AudioPlayerController {
-    var duration: Observable<CMTime?> { get }
-    var currentDuration: Observable<CMTime?> { get }
+    var duration: Observable<Float64?> { get }
+    var currentDuration: Observable<Float64?> { get }
     var playerStatus: Observable<AudioPlayerStatus> { get }
     var rate: Observable<Float> { get }
     
@@ -26,14 +26,15 @@ final class AudioPlayerControllerImpl {
     
     // MARK: - Private properties
     
-    private let _duration = BehaviorSubject<CMTime?>(value: nil)
-    private let _currentDuration = BehaviorSubject<CMTime?>(value: nil)
+    private let _duration = BehaviorSubject<Float64?>(value: nil)
+    private let _currentDuration = BehaviorSubject<Float64?>(value: nil)
     private let _playerStatus = BehaviorSubject<AudioPlayerStatus>(value: .none)
     private let _rate = BehaviorSubject<Float>(value: 1.0)
     private let audioPlayerFactory: AudioPLayerFactory
     private let kRateValues: [Float]
     private let kRollTime: Float64
     private var player: AVPlayer?
+    private var lastRate: Float = 1.0
     
     // MARK: - Initialize
     
@@ -48,11 +49,11 @@ final class AudioPlayerControllerImpl {
 // MARK: - AudioPlayerController
 
 extension AudioPlayerControllerImpl: AudioPlayerController {
-    var duration: Observable<CMTime?> {
+    var duration: Observable<Float64?> {
         _duration
     }
     
-    var currentDuration: Observable<CMTime?> {
+    var currentDuration: Observable<Float64?> {
         _currentDuration
     }
     
@@ -69,6 +70,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
             return
         }
         player.play()
+        player.rate = lastRate
         _playerStatus.onNext(.play)
     }
     
@@ -76,6 +78,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         guard let player = player else {
             return
         }
+        lastRate = player.rate
         player.pause()
         _playerStatus.onNext(.pause)
     }
@@ -99,7 +102,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         let newTime = currentTime - kRollTime < 0 ? 0 : currentTime - kRollTime
         let time2 = newTime.toCMTime
         player.seek(to: time2, toleranceBefore: .zero, toleranceAfter: .zero)
-        _currentDuration.onNext(time2)
+        _currentDuration.onNext(time2.toFloat64)
     }
     
     func rollForward() {
@@ -111,7 +114,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         if newTime < CMTimeGetSeconds(duration) - kRollTime {
             let time2 = newTime.toCMTime
             player.seek(to: time2, toleranceBefore: .zero, toleranceAfter: .zero)
-            _currentDuration.onNext(time2)
+            _currentDuration.onNext(time2.toFloat64)
         }
     }
     
@@ -121,7 +124,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
         }
         let newTime = value.toCMTime
         player.seek(to: newTime)
-        _currentDuration.onNext(newTime)
+        _currentDuration.onNext(newTime.toFloat64)
     }
     
     // MARK: - Private methods
@@ -131,7 +134,7 @@ extension AudioPlayerControllerImpl: AudioPlayerController {
             return
         }
         player.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: DispatchQueue.main, using: { time in
-            self._currentDuration.onNext(time)
+            self._currentDuration.onNext(time.toFloat64)
         })
     }
     
@@ -165,5 +168,11 @@ extension AudioPlayerControllerImpl {
 fileprivate extension Float64 {
     var toCMTime: CMTime {
         CMTimeMake(value: Int64(self * 1000 as Float64), timescale: 1000)
+    }
+}
+
+fileprivate extension CMTime {
+    var toFloat64: Float64 {
+        Float64(CMTimeGetSeconds(self))
     }
 }

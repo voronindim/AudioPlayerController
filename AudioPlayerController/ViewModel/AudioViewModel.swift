@@ -78,14 +78,14 @@ final class AudioViewModel {
         }).disposed(by: disposeBag)
     }
     
-    private func setDuration(time: CMTime?) {
+    private func setDuration(time: Float64?) {
         guard let time = time else {
             return
         }
         _duration.onNext(time.durationText)
     }
     
-    private func setCurrentDuration(time: CMTime?) {
+    private func setCurrentDuration(time: Float64?) {
         guard let time = time else {
             return
         }
@@ -135,9 +135,9 @@ extension AudioViewModel {
     }
 }
 
-fileprivate extension CMTime {
-    var durationText:String {
-        let totalSeconds = Int(CMTimeGetSeconds(self))
+fileprivate extension Float64 {
+    var durationText: String {
+        let totalSeconds = Int(self)
         let hours:Int = Int(totalSeconds / 3600)
         let minutes:Int = Int(totalSeconds % 3600 / 60)
         let seconds:Int = Int((totalSeconds % 3600) % 60)
